@@ -15,10 +15,9 @@ jobs:
           go-version: "1.16"
 
       - name: golangci-lint
-        uses: reviewdog/action-golangci-lint@master
+        uses: Doarakko/action-golangci-lint@master
         with:
           workdir: golangci-lint/
           github_token: ${{ github.token }}
           reporter: "github-pr-review"
-          level: "info"
           fail_on_error: true
