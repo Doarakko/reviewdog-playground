@@ -1,6 +1,19 @@
 name: reviewdog
 on: [pull_request]
 jobs:
+  misspell:
+    name: runner / misspell
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code.
+        uses: actions/checkout@v1
+      - name: misspell
+        uses: Doarakko/action-misspell@topic/fai-on-error
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: "github-pr-review"
+          locale: "US"
+          fail_on_error: true
   golangci-lint:
     name: runner / golangci-lint
     runs-on: ubuntu-latest
